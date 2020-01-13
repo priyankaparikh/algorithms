@@ -1,1 +1,4 @@
 /venv
+*pycache
+.pytest_cache
+__pycache__
