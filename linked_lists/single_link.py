@@ -30,11 +30,18 @@ class Linked_list():
         """Instantiate a linked list to point to the head"""
         self.head = head
 
-    def print_nodes(self):
-        """Iterate through a linked_list."""
+    def get_head(self):
+        """return the first node value."""
+        return self.head.value
 
-    def insert_node(self, value):
+    def get_tail(self):
+        """Return the value of the last node."""
+        curr =  self.head
 
-    def search_node(self, value):
+        while curr:
+            if not curr.next:
+                return curr.value
+            else:
+                curr = curr.next
 
-    def
+    def insert_node_idx

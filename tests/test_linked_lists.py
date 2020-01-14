@@ -16,10 +16,20 @@ def test_node_functions():
     assert node.next == node2
 
 def test_linked_list():
-    node1 = ('apple')
-    node2 = ('banana', node1)
-    node3 = ('cabbage', node2)
+    node1 = Node('apple')
+    node2 = Node('banana', node1)
+    node3 = Node('cabbage', node2)
 
-    ll = Linked_list(node1)
+    ll = Linked_list(node3)
 
-    assert print_nodes
+    assert ll.get_head() == 'cabbage'
+    assert ll.get_tail() == 'apple'
+
+    ll.insert_node_at_start('friend')
+    assert ll.get_head() == 'friend'
+    #
+    # assert ll.search_node('pete') == True
+    # assert ll.search_node('priyanka') == False
+
+    ll.insert_node_idx('priyanka', 3)
+    assert ll.get_tail() == 'priyanka'
