@@ -24,8 +24,7 @@ def test_linked_list():
 
     assert ll.get_head() == 'cabbage'
     assert ll.get_tail() == 'apple'
-
-
+    
 def test_list_insertions():
     node1 = Node('apple')
     node2 = Node('banana', node1)

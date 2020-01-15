@@ -38,11 +38,10 @@ class Linked_list():
         """Return the value of the last node."""
         curr = self.head
 
-        while curr:
-            if not curr.next:
-                return curr.value
-            else:
-                curr = curr.next
+        while curr.next:
+            curr = curr.next
+
+        return curr.value
 
     def add_at_head(self, value):
         """ A node to the head of the linked list"""
@@ -55,9 +54,8 @@ class Linked_list():
 
         curr = self.head
 
-        while curr:
-            if not curr.next:
-                temp = Node(value)
-                curr.next = temp
-            else:
-                curr = curr.next
+        while curr.next:
+            curr = curr.next
+
+        temp = Node(value)
+        curr.next = temp
