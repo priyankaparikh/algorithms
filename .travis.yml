@@ -8,7 +8,6 @@ before_install:
   - pip install -U pytest
   - pip install codecov
 script:
-  - pip install -r requirements.txt
   - python -m pytest -v # run tests
 after_success:
   - codecov # submit coverage
