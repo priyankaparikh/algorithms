@@ -1,0 +1,15 @@
+language: python
+python:
+  - 2.7
+  - 3.5
+  - 3.6
+before_install:
+  - python --version
+  - pip install -U pip
+  - pip install -U pytest
+  - pip install codecov
+script:
+  - pip install -r requirements.txt
+  - python -m pytest -v # run tests
+after_success:
+  - codecov # submit coverage

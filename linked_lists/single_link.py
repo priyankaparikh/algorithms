@@ -36,7 +36,7 @@ class Linked_list():
 
     def get_tail(self):
         """Return the value of the last node."""
-        curr =  self.head
+        curr = self.head
 
         while curr:
             if not curr.next:
@@ -44,4 +44,20 @@ class Linked_list():
             else:
                 curr = curr.next
 
-    def insert_node_idx
+    def add_at_head(self, value):
+        """ A node to the head of the linked list"""
+
+        temp = self.head
+        self.head = Node(value, temp)
+
+    def add_at_tail(self, value):
+        """ A node to the end of the linked list"""
+
+        curr = self.head
+
+        while curr:
+            if not curr.next:
+                temp = Node(value)
+                curr.next = temp
+            else:
+                curr = curr.next
