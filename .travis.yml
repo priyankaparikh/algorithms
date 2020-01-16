@@ -9,6 +9,7 @@ before_install:
   - pip install codecov
 script:
   - python -m pytest -v # run tests
-  - coverage run test_linked_lists.py
+  - coverage run -m pytest
+  - coverage report -m
 after_success:
   - codecov # submit coverage
