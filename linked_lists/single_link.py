@@ -59,3 +59,45 @@ class Linked_list():
 
         temp = Node(value)
         curr.next = temp
+
+    def get_node(self, search_term=None, idx=None):
+        """ Iteratively search for a node within the link list"""
+
+        curr = self.head
+        count = 1
+
+        while curr:
+            if curr.value == search_term:
+                return True
+            if count == idx:
+                return curr.value
+            curr = curr.next
+            count += 1
+
+        return False
+
+
+    def print_nodes(self):
+        curr = self.head
+
+        while curr:
+            print(curr.value)
+            curr = curr.next
+
+
+    def insert_node(self, value, idx):
+        """Insert a node of a given value or at an index"""
+
+        curr = self.head
+        count = 1
+        new_node = Node(value)
+
+        while curr and count <= idx:
+            if count == (idx-1):
+                temp = curr.next
+                curr.next = new_node
+                curr.next.next = temp
+            self.print_nodes()
+            curr = curr.next
+            count += 1
+
