@@ -3,6 +3,7 @@
 .pytest_cache
 __pycache__
 .coverage
+
 # User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml
@@ -24,4 +25,4 @@ __pycache__
 
 # Gradle
 .idea/**/gradle.xml
-.idea/**/libraries
+.idea/**/libraries.idea
