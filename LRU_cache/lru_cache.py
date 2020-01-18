@@ -18,7 +18,7 @@ class LRUCache():
         self.tail = dummy2
         self.head.next = self.tail
         self.tail.prev = self.head
-
+        self.vals = {}
         self.capacity = capacity
         self.len = 0
 
@@ -36,16 +36,20 @@ class LRUCache():
             #increase the length of the cache
             self.len += 1
 
+            #add the values the vals map
+            self.vals[key] = value
+
+        elif self.len == self.capacity:
+            self.pop_least_used()
+            self.put(key, value)
+
 
     def get(self, value):
         """Check for a given value"""
-        curr = self.head
 
-        while curr:
-            if curr.value == value:
-                return curr.value
-            else:
-                curr = curr.next
+        if value in self.vals:
+            self.adjust_cache(value)
+            return value
 
         return -1
 
@@ -53,8 +57,38 @@ class LRUCache():
     def pop_least_used(self):
 
         self.tail.prev = self.tail.prev.prev
+        self.tail.prev.next = self.tail
 
 
-    def adjust_cache(self):
-        pass
+    def adjust_cache(self, value):
+        """ When a node is referenced, move the node to the top of the cache. This ensures that the
+        least recently used node remains previous to the tail."""
+
+
+        curr = self.head.next
+
+        while curr:
+            if curr.value == value:
+
+                dummy1 = curr.next
+                dummy2 = curr.prev
+
+                #adjust the links of the node
+                curr.next = self.head.next
+                curr.prev = self.head
+
+                #adjust the links of the cache nodes
+
+                self.head.next.next.prev = curr
+                self.head.next = curr
+
+                dummy2.next = dummy1
+                dummy1.prev = dummy2
+                return
+
+            else:
+                curr = curr.next
+
+
+
 

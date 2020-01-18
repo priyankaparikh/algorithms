@@ -44,7 +44,7 @@ def test_LRU_put():
     assert cache.tail.prev.value == 1
     assert cache.len == 2
 
-
+#
 def test_LRU_get():
     cache = LRUCache(4)
     cache.put(1, 1)
@@ -53,15 +53,29 @@ def test_LRU_get():
     assert cache.get(12)
     assert cache.get(10) == -1
     assert cache.get(1)
-    assert not cache.get(0)
+    assert cache.get(4) == -1
 
 
-def pop_least_used():
+def test_pop_least_used():
     cache = LRUCache(4)
     cache.put(1, 1)
     cache.put(12, 12)
     cache.put(10, 10)
     cache.put(899, 899)
 
-    assert cache.pop_least_used()
-    assert cache.tail.prev == 12
+    cache.pop_least_used()
+    assert cache.tail.prev.value == 12
+
+def test_cache_adjustment():
+    cache = LRUCache(4)
+    cache.put(1, 1)
+    cache.put(12, 12)
+    cache.put(10, 10)
+    cache.put(899, 899)
+    cache.get(1)
+    assert cache.head.next.value == 1
+    cache.get(12)
+    assert cache.head.next.value == 12
+    cache.get(10)
+    assert cache.head.next.value == 10
+    
