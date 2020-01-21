@@ -21,8 +21,3 @@ class List():
             prev = curr
             curr = next
         self.head = prev
-
-
-    def reverse_rec(self, node):
-        """ recursively reverse a linked list"""
-        pass
