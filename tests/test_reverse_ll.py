@@ -16,3 +16,6 @@ def test_reverse_it():
     assert ll.head.next.next.value == 'c'
     assert ll.head.next.next.next.value == 'd'
     assert ll.head.next.next.next.next.value == 'e'
+
+def test_rec():
+    assert ll.reverse_rec()
