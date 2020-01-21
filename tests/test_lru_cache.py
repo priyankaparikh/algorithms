@@ -78,4 +78,3 @@ def test_cache_adjustment():
     assert cache.head.next.value == 12
     cache.get(10)
     assert cache.head.next.value == 10
-    
