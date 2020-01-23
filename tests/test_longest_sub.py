@@ -7,4 +7,3 @@ def test_length_of_Substring():
     assert sub2 == 3
     sub3 = lengthOfLongestSubstring("cdd")
     assert sub3 == 2
-    
