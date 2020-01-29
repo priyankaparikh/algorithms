@@ -8,9 +8,6 @@ def is_palindrome(s):
 
     return chars == chars[::-1]
 
-def max_profit(lst):
-    """https://leetcode.com/problems/best-time-to-buy-and-sell-stock/"""""
-    pass
 
 def first_unique_char(s):
     """https://leetcode.com/problems/first-unique-character-in-a-string"""
@@ -30,3 +27,26 @@ def first_unique_char(s):
             return i
 
     return -1
+
+
+def move_zeroes(l):
+    # keep track of where the zero was found
+    zero_at = 0
+
+    for i in range(len(l)):
+        el = l[i]
+        if el != 0:
+            l[zero_at], l[i] = l[i], l[zero_at]
+            zero_at += 1
+
+    return l
+
+def remove_elements(nums, val):
+    count = 0
+
+    for i in range(len(nums)):
+        if nums[i] != val:
+            nums[count] = nums[i]
+            count += 1
+
+    return count
