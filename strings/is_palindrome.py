@@ -50,3 +50,4 @@ def remove_elements(nums, val):
             count += 1
 
     return count
+
