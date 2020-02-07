@@ -14,3 +14,7 @@ def test_binary_tree():
     assert BST.root.val == 12
     assert BST.search_node(12)
     assert not BST.search_node(52)
+    BST.preorder()
+    BST.postorder()
+    BST.inorder()
+    assert not BST

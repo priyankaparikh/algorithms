@@ -37,6 +37,30 @@ class BinaryNode():
             else:
                 return False
 
+    def preorder(self):
+        if self:
+            print(f'{self.val}')
+            if self.left:
+                self.left.preorder()
+            if self.right:
+                self.right.preorder()
+
+    def postorder(self):
+        if self:
+            if self.left:
+                self.left.postorder()
+            if self.right:
+                self.right.postorder()
+            print(f'{self.val}')
+
+
+    def inorder(self):
+        if self:
+            if self.left:
+                self.left.inorder()
+            print(f'{self.val}')
+            if self.right:
+                self.right.inorder()
 
 class BinaryTree():
     def __init__(self, root=None):
@@ -54,11 +78,81 @@ class BinaryTree():
         else:
             return False
 
+    def preorder(self):
+        print('preorder')
+        self.root.preorder()
+
+    def postorder(self):
+        print('postorder')
+        self.root.postorder()
+
+    def inorder(self):
+        print('inorder')
+        self.root.inorder()
+
     def delete_node(self):
         pass
 
-    def traverse_tree(self):
-        pass
+
+###############################################################################
+# Trie implementation without trie nodes.
+
+class Trie(object):
+
+    def __init__(self, root=None):
+        """
+        Initialize your data structure here.
+        """
+        self.root = {}
+
+    def insert(self, word):
+        """
+        Inserts a word into the trie.
+        :type word: str
+        :rtype: None
+        """
+        curr_node = self.root
+
+        for char in word:
+            if not char in curr_node:
+                curr_node[char] = {}
+            curr_node = curr_node[char]
+        curr_node["*"] = {}
+
+    def search(self, word):
+        """
+        Returns if the word is in the trie.
+        :type word: str
+        :rtype: bool
+        """
+        curr_node = self.root
+
+        for char in word:
+            if char not in curr_node:
+                return False
+            curr_node = curr_node[char]
+        return '*' in curr_node
+
+    def startsWith(self, prefix):
+        """
+        Returns if there is any word in the trie that starts with the given prefix.
+        :type prefix: str
+        :rtype: bool
+        """
+        curr_node = self.root
+
+        for char in prefix:
+            if char not in curr_node:
+                return False
+            curr_node = curr_node[char]
+        return True
+
+
+# Your Trie object will be instantiated and called as such:
+# obj = Trie()
+# obj.insert(word)
+# param_2 = obj.search(word)
+# param_3 = obj.startsWith(prefix)
 
 
 ###################################################################################
