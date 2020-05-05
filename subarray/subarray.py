@@ -14,3 +14,6 @@ def subarray_average(k, arr):
 
     return out
 
+
+def maximum_sum_subarray(k, arr):
+    """Given an array find the subarray with the maximum sum of size k """
