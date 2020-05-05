@@ -16,4 +16,19 @@ def subarray_average(k, arr):
 
 
 def maximum_sum_subarray(k, arr):
-    """Given an array find the subarray with the maximum sum of size k """
+    """Given an array find the subarray with the maximum sum of size k."""
+    window_start = 0
+    max_sum = 0
+    window_sum = 0
+
+    for window_end in range(len(arr)):
+        window_sum += arr[window_end]
+
+        if window_end >= k - 1:
+            if max_sum < window_sum:
+                max_sum = window_sum
+            window_sum -= arr[window_start]
+            window_start += 1
+
+    return max_sum
+
