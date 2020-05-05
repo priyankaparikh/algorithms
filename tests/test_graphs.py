@@ -17,4 +17,4 @@ def test_binary_tree():
     BST.preorder()
     BST.postorder()
     BST.inorder()
-    assert not BST
+
