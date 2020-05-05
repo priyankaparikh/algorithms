@@ -9,4 +9,5 @@ def test_subarray_average():
 def test_maximum_sum_subarray():
     """Given an array find the subarray with the maximum sum of size k """
     assert maximum_sum_subarray(3, [2, 1, 5, 1, 3, 2]) == 9
+    assert maximum_sum_subarray(2, [2, 3, 4, 1, 5]) == 7
 
