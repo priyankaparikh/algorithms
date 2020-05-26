@@ -54,29 +54,64 @@ def smallest_subarray(k, arr):
 
 def longest_substr_with_distinct_chars(k ,chars):
     """Given a substring find the longest substring with k distinct chars."""
-    char_frequency = {}
+    char_frq = {}
+    j = 0
     max_len = 0
-    w_start = 0
 
-    for w_end in range(len(chars)):
-        right_char = chars[w_end]
-        if right_char not in char_frequency:
-            char_frequency[right_char] = 0
-        char_frequency[right_char] += 1
+    for i in range(len(chars)):
+        if chars[i] not in char_frq:
+            char_frq[chars[i]] = 0
+        char_frq[chars[i]] += 1
 
-        while len(char_frequency) > k:
-            left_char = chars[w_start]
-            char_frequency[left_char] -= 1
-            if char_frequency[left_char] == 0:
-                del char_frequency[left_char]
-            w_start += 1
-            # shrink the window
-            # remember the maximum length so far
-            max_len = max(max_len, w_end - w_start + 1)
+        while len(char_frq) > k:
+            left = chars[j]
+            if left in char_frq:
+                char_frq[left] -= 1
+            if char_frq[left] == 0:
+                del(char_frq[left])
+            j += 1
+        max_len = max(max_len, i-j+1)
 
     return max_len
+
+def fruits_in_basket(chars):
+    """Given an array of characters where each character represents a fruit tree,
+     you are given two baskets and your goal is to put maximum number of fruits in each basket.
+    The only restriction is that each basket can have only one type of fruit."""
+    char_frq = {}
+    j = 0
+    max_fruit = 0
+
+    for i in range(len(chars)):
+        if chars[i] not in char_frq:
+            char_frq[chars[i]] = 0
+        char_frq[chars[i]] += 1
+
+        while len(char_frq) > 2:
+            left = chars[j]
+            if left in char_frq:
+                char_frq[left] -= 1
+            if char_frq[left] == 0:
+                del (char_frq[left])
+            j += 1
+
+        max_fruit = max(max_fruit, i-j+1)
+
+    return max_fruit
 
 
 def longest_substring_no_repeat(str):
     """Given a string find the longest substring with no repeating character"""
-    pass
+    char_idx = {}
+    j = 0
+    max_count = 0
+
+    for i in range(len(str)):
+        if str[i] not in char_idx:
+            char_idx[str[i]] = i
+        else:
+            char_idx[str[i]] = i
+            j = i
+        max_count = max(max_count, i-j+1)
+
+    return max_count
