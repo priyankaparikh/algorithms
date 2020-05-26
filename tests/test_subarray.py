@@ -1,6 +1,7 @@
 from subarray.subarray import subarray_average, maximum_sum_subarray
 from subarray.subarray import smallest_subarray, longest_substr_with_distinct_chars
-from subarray.subarray import longest_substring_no_repeat
+from subarray.subarray import fruits_in_basket, longest_substring_no_repeat
+
 
 def test_subarray_average():
     """find the average of all contiguous subarrays of size ‘K’ in a given array."""
@@ -26,6 +27,13 @@ def test_longest_substr_with_distinct_chars():
     assert longest_substr_with_distinct_chars(1, "araaci") == 2
     assert longest_substr_with_distinct_chars(3, "cbbebi") == 5
 
+
+def test_fruits_in_basket():
+    assert fruits_in_basket(['A', 'B', 'C', 'A', 'C']) == 3
+    assert fruits_in_basket(['A', 'B', 'C', 'B', 'B', 'C']) == 5
+
+
 def test_longest_substr_no_repeat():
     """Given a string find the longest substring with no repeating character"""
-    pass
+    assert longest_substring_no_repeat("aabccbb") == 3
+    assert longest_substring_no_repeat("aabccbb") == 3
